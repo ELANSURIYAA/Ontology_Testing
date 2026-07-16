@@ -1,0 +1,99 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix corp: <http://example.org/corporate#> .
+@prefix : <http://example.org/corporate#> .
+
+<http://example.org/corporate> a owl:Ontology ;
+    rdfs:label "Corporate Organization Ontology" ;
+    rdfs:comment "Sample enterprise ontology for GraphDB and OWL to TTL conversion." .
+
+#################################################################
+# Classes
+#################################################################
+
+:Company a owl:Class .
+
+:Department a owl:Class .
+
+:Employee a owl:Class .
+
+:Manager a owl:Class ;
+    rdfs:subClassOf :Employee .
+
+:Engineer a owl:Class ;
+    rdfs:subClassOf :Employee .
+
+:Project a owl:Class .
+
+:Client a owl:Class .
+
+:Office a owl:Class .
+
+#################################################################
+# Object Properties
+#################################################################
+
+:worksIn a owl:ObjectProperty .
+
+:worksOn a owl:ObjectProperty .
+
+:manages a owl:ObjectProperty .
+
+:forClient a owl:ObjectProperty .
+
+:locatedIn a owl:ObjectProperty .
+
+#################################################################
+# Datatype Properties
+#################################################################
+
+:employeeId a owl:DatatypeProperty .
+
+:employeeName a owl:DatatypeProperty .
+
+:departmentName a owl:DatatypeProperty .
+
+:projectName a owl:DatatypeProperty .
+
+:clientName a owl:DatatypeProperty .
+
+:officeLocation a owl:DatatypeProperty .
+
+:salary a owl:DatatypeProperty .
+
+:email a owl:DatatypeProperty .
+
+#################################################################
+# Individuals
+#################################################################
+
+:TechCorp a :Company .
+
+:Engineering a :Department .
+
+:Sales a :Department .
+
+:HyderabadOffice a :Office .
+
+:GlobalBank a :Client .
+
+:AIPlatform a :Project .
+
+:AliceJohnson a :Manager ;
+    :employeeId "1001" ;
+    :employeeName "Alice Johnson" ;
+    :email "alice@techcorp.com" ;
+    :salary "95000"^^xsd:decimal ;
+    :worksIn :Engineering ;
+    :manages :Engineering ;
+    :worksOn :AIPlatform .
+
+:JohnSmith a :Engineer ;
+    :employeeId "1002" ;
+    :employeeName "John Smith" ;
+    :email "john@techcorp.com" ;
+    :salary "72000"^^xsd:decimal ;
+    :worksIn :Engineering ;
+    :worksOn :AIPlatform .

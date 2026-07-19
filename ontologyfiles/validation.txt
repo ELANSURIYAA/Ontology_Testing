@@ -1,4 +1,22 @@
+{ "error": "Conversion incomplete: the generated Turtle output only contains the ontology declaration and class definitions, and is missing object properties, datatype properties, and individuals. Please re-run the OWL to Turtle conversion with a fully compliant converter.", "status": "failure" }
+
+----------
+
 {
   "status": "failure",
-  "error": "Validation could not be completed because one or both ontology inputs are invalid or missing. The context indicates that no valid Turtle (TTL) ontology content was produced by the OWL To TTL Converter Agent (conversion incomplete) and the expected ttl.ttl file cannot be retrieved from the repository (404 Not Found). Without actual OWL and TTL ontology contents, syntactic validation and component comparison cannot be performed."
+  "error": "Turtle (TTL) ontology content is not available and the provided context explicitly indicates: \"Conversion incomplete: the generated Turtle output only contains the ontology declaration and class definitions, and is missing object properties, datatype properties, and individuals. Please re-run the OWL to Turtle conversion with a fully compliant converter.\" Without complete, validated TTL content from the OWL To TTL Converter Agent, the required 'content' input is missing and I cannot safely write ttl.ttl to ELANSURIYAA/Ontology_Testing. Please re-run the OWL-to-TTL conversion to obtain a full, compliant TTL ontology, then provide that exact TTL text so it can be written to the GitHub repository."
+}
+
+----------
+
+{
+  "status": "failure",
+  "error": "Unable to read ontologyfiles/ttl.ttl from repository ELANSURIYAA/Ontology_Testing on branch main: GitHub API returned \"404 Client Error: Not Found\" for https://api.github.com/repos/ELANSURIYAA/Ontology_Testing/contents/ontologyfiles/ttl.ttl?ref=main. This indicates that the specified file path does not exist in the target branch or is inaccessible with the provided parameters. No TTL ontology content could be retrieved, so a complete ttl.ttl file cannot be returned. Please verify that the folder 'ontologyfiles' and file 'ttl.ttl' exist on the 'main' branch, confirm correct spelling and casing of the path, and ensure the file has been committed and pushed to the repository before retrying."
+}
+
+----------
+
+{
+  "status": "failure",
+  "error": "Validation could not be completed because one or both ontology inputs are invalid or unavailable. The provided context explicitly indicates that the generated Turtle ontology is incomplete (only ontology declaration and class definitions, missing object properties, datatype properties, and individuals) and that the ttl.ttl file cannot be retrieved from the repository (404 Not Found). Without a complete, accessible Turtle ontology corresponding to the original OWL ontology, syntactic validation, component comparison, and metric calculations for completeness, accuracy, and efficiency cannot be reliably performed."
 }

@@ -1,0 +1,67 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix corp: <http://example.org/corporate#> .
+
+<http://example.org/corporate> a owl:Ontology ;
+    rdfs:label "Corporate Organization Ontology" ;
+    rdfs:comment "Sample enterprise ontology for GraphDB and OWL to TTL conversion." .
+
+### Classes
+
+corp:Company a owl:Class .
+corp:Department a owl:Class .
+corp:Employee a owl:Class .
+corp:Manager a owl:Class ;
+    rdfs:subClassOf corp:Employee .
+corp:Engineer a owl:Class ;
+    rdfs:subClassOf corp:Employee .
+corp:Project a owl:Class .
+corp:Client a owl:Class .
+corp:Office a owl:Class .
+
+### Object Properties
+
+corp:worksIn a owl:ObjectProperty .
+corp:worksOn a owl:ObjectProperty .
+corp:manages a owl:ObjectProperty .
+corp:forClient a owl:ObjectProperty .
+corp:locatedIn a owl:ObjectProperty .
+
+### Datatype Properties
+
+corp:employeeId a owl:DatatypeProperty .
+corp:employeeName a owl:DatatypeProperty .
+corp:departmentName a owl:DatatypeProperty .
+corp:projectName a owl:DatatypeProperty .
+corp:clientName a owl:DatatypeProperty .
+corp:officeLocation a owl:DatatypeProperty .
+corp:salary a owl:DatatypeProperty .
+corp:email a owl:DatatypeProperty .
+
+### Individuals
+
+corp:TechCorp a corp:Company .
+corp:Engineering a corp:Department .
+corp:Sales a corp:Department .
+corp:HyderabadOffice a corp:Office .
+corp:GlobalBank a corp:Client .
+corp:AIPlatform a corp:Project .
+
+corp:AliceJohnson a corp:Manager ;
+    corp:employeeId "1001"^^xsd:string ;
+    corp:employeeName "Alice Johnson"^^xsd:string ;
+    corp:email "alice@techcorp.com"^^xsd:string ;
+    corp:salary "95000"^^xsd:decimal ;
+    corp:worksIn corp:Engineering ;
+    corp:manages corp:Engineering ;
+    corp:worksOn corp:AIPlatform .
+
+corp:JohnSmith a corp:Engineer ;
+    corp:employeeId "1002"^^xsd:string ;
+    corp:employeeName "John Smith"^^xsd:string ;
+    corp:email "john@techcorp.com"^^xsd:string ;
+    corp:salary "72000"^^xsd:decimal ;
+    corp:worksIn corp:Engineering ;
+    corp:worksOn corp:AIPlatform .

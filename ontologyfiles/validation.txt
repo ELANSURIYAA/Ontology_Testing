@@ -1,0 +1,4 @@
+{
+  "status": "failure",
+  "error": "Validation could not be completed because one or both ontology inputs are invalid or missing. The context indicates that no valid Turtle (TTL) ontology content was produced by the OWL To TTL Converter Agent (conversion incomplete) and the expected ttl.ttl file cannot be retrieved from the repository (404 Not Found). Without actual OWL and TTL ontology contents, syntactic validation and component comparison cannot be performed."
+}

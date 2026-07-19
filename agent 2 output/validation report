@@ -1,0 +1,475 @@
+{
+  "status": "success",
+  "overallScore": 97,
+  "completeness": {
+    "score": 99,
+    "summary": "The Turtle ontology is almost fully complete with respect to the source OWL ontology. All ontology declarations, namespaces, classes, subclass relationships, object properties, datatype properties, individuals, annotations, and property assertions are present. The only minor deviation is the explicit datatype used for plain literals in the original OWL (untyped literals) versus xsd:string in TTL, which does not result in missing entities or relationships but is noted as a minor representation difference."
+  },
+  "accuracy": {
+    "score": 96,
+    "summary": "Namespace mappings, entity IRIs, class and property declarations, and individual assertions are accurately preserved. Datatypes for numeric and string values are correctly mapped (xsd:decimal preserved; plain literals mapped to xsd:string). Turtle syntax is valid and well-formed. Minor representation differences exist in literal typing (implicit vs xsd:string) and in the omission of explicit rdf:datatype on some literals in the OWL source, but these do not change the semantic meaning in typical OWL/RDF interpretations. No incorrect or spurious entities or relations were introduced."
+  },
+  "efficiency": {
+    "score": 97,
+    "summary": "The Turtle ontology is efficient and free from duplicate triples, redundant entities, or unnecessary statements. It closely mirrors the OWL source without introducing superfluous constructs. The use of typed string literals throughout may be considered slightly verbose compared to plain literals but is acceptable and common in practice; it does not constitute inefficiency in the sense of semantic redundancy."
+  },
+  "validationReport": {
+    "missingEntities": [],
+    "missingRelationships": [],
+    "incorrectMappings": [],
+    "syntaxIssues": [],
+    "namespaceInconsistencies": [],
+    "warnings": [
+      {
+        "id": "W-001",
+        "type": "LiteralTypingDifference",
+        "description": "In the OWL source, several datatype property values (employeeId, employeeName, email) are plain literals without explicit rdf:datatype. In the Turtle ontology, these are represented as typed literals with xsd:string (e.g., \"1001\"^^xsd:string). While semantically acceptable and common, this is a minor difference in representation that should be noted if strict lexical equivalence is required.",
+        "affectedElements": [
+          "corp:AliceJohnson corp:employeeId",
+          "corp:AliceJohnson corp:employeeName",
+          "corp:AliceJohnson corp:email",
+          "corp:JohnSmith corp:employeeId",
+          "corp:JohnSmith corp:employeeName",
+          "corp:JohnSmith corp:email"
+        ]
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "R-001",
+        "area": "DatatypeConsistency",
+        "description": "If strict alignment with the original OWL lexical forms is required, consider representing simple string literals in Turtle without explicit xsd:string datatype (e.g., \"Alice Johnson\" instead of \"Alice Johnson\"^^xsd:string). Most RDF tooling treats plain literals and xsd:string as equivalent, but this adjustment can improve perceived one-to-one lexical correspondence."
+      },
+      {
+        "id": "R-002",
+        "area": "DocumentationAndTraceability",
+        "description": "Document the conversion rules used by the OWL to TTL converter, especially for literal typing and prefix handling, so that future validations and downstream consumers understand why plain literals may be normalized to xsd:string in the Turtle output."
+      }
+    ],
+    "detailedFindings": {
+      "syntacticValidity": {
+        "owlInputValid": true,
+        "ttlInputValid": true,
+        "notes": [
+          "The OWL ontology (RDF/XML) is well-formed: all elements are properly closed, namespaces declared, and OWL constructs used correctly for the given content.",
+          "The Turtle ontology is syntactically valid: prefixes are declared; triples are correctly terminated; and the use of typed literals and IRIs conforms to Turtle syntax."
+        ]
+      },
+      "ontologyDeclaration": {
+        "owl": {
+          "iri": "http://example.org/corporate",
+          "label": "Corporate Organization Ontology",
+          "comment": "Sample enterprise ontology for GraphDB and OWL to TTL conversion."
+        },
+        "ttl": {
+          "iri": "http://example.org/corporate",
+          "label": "Corporate Organization Ontology",
+          "comment": "Sample enterprise ontology for GraphDB and OWL to TTL conversion."
+        },
+        "comparisonResult": {
+          "status": "match",
+          "details": "Ontology IRI, rdfs:label, and rdfs:comment in TTL match those in the OWL source."
+        }
+      },
+      "namespaces": {
+        "owl": {
+          "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+          "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+          "owl": "http://www.w3.org/2002/07/owl#",
+          "xsd": "http://www.w3.org/2001/XMLSchema#",
+          "corp": "http://example.org/corporate#"
+        },
+        "ttl": {
+          "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+          "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+          "owl": "http://www.w3.org/2002/07/owl#",
+          "xsd": "http://www.w3.org/2001/XMLSchema#",
+          "corp": "http://example.org/corporate#"
+        },
+        "comparisonResult": {
+          "status": "match",
+          "details": "All prefixes and their namespace IRIs in TTL match those declared in the OWL source."
+        }
+      },
+      "classes": {
+        "owlClasses": [
+          "http://example.org/corporate#Company",
+          "http://example.org/corporate#Department",
+          "http://example.org/corporate#Employee",
+          "http://example.org/corporate#Manager",
+          "http://example.org/corporate#Engineer",
+          "http://example.org/corporate#Project",
+          "http://example.org/corporate#Client",
+          "http://example.org/corporate#Office"
+        ],
+        "ttlClasses": [
+          "corp:Company",
+          "corp:Department",
+          "corp:Employee",
+          "corp:Manager",
+          "corp:Engineer",
+          "corp:Project",
+          "corp:Client",
+          "corp:Office"
+        ],
+        "comparisonResult": {
+          "status": "match",
+          "details": "All 8 classes in the OWL ontology are present and correctly declared as owl:Class in the Turtle ontology with consistent IRIs."
+        }
+      },
+      "subClassRelationships": {
+        "owlSubClasses": [
+          {
+            "subClass": "http://example.org/corporate#Manager",
+            "superClass": "http://example.org/corporate#Employee"
+          },
+          {
+            "subClass": "http://example.org/corporate#Engineer",
+            "superClass": "http://example.org/corporate#Employee"
+          }
+        ],
+        "ttlSubClasses": [
+          {
+            "subClass": "corp:Manager",
+            "superClass": "corp:Employee"
+          },
+          {
+            "subClass": "corp:Engineer",
+            "superClass": "corp:Employee"
+          }
+        ],
+        "comparisonResult": {
+          "status": "match",
+          "details": "Subclass axioms Manager ⊑ Employee and Engineer ⊑ Employee are preserved exactly in the Turtle ontology."
+        }
+      },
+      "objectProperties": {
+        "owlObjectProperties": [
+          "http://example.org/corporate#worksIn",
+          "http://example.org/corporate#worksOn",
+          "http://example.org/corporate#manages",
+          "http://example.org/corporate#forClient",
+          "http://example.org/corporate#locatedIn"
+        ],
+        "ttlObjectProperties": [
+          "corp:worksIn",
+          "corp:worksOn",
+          "corp:manages",
+          "corp:forClient",
+          "corp:locatedIn"
+        ],
+        "comparisonResult": {
+          "status": "match",
+          "details": "All 5 object properties in the OWL ontology are present and correctly declared as owl:ObjectProperty in the Turtle ontology."
+        }
+      },
+      "datatypeProperties": {
+        "owlDatatypeProperties": [
+          "http://example.org/corporate#employeeId",
+          "http://example.org/corporate#employeeName",
+          "http://example.org/corporate#departmentName",
+          "http://example.org/corporate#projectName",
+          "http://example.org/corporate#clientName",
+          "http://example.org/corporate#officeLocation",
+          "http://example.org/corporate#salary",
+          "http://example.org/corporate#email"
+        ],
+        "ttlDatatypeProperties": [
+          "corp:employeeId",
+          "corp:employeeName",
+          "corp:departmentName",
+          "corp:projectName",
+          "corp:clientName",
+          "corp:officeLocation",
+          "corp:salary",
+          "corp:email"
+        ],
+        "comparisonResult": {
+          "status": "match",
+          "details": "All 8 datatype properties in the OWL ontology are present and correctly declared as owl:DatatypeProperty in the Turtle ontology."
+        }
+      },
+      "individuals": {
+        "owlIndividuals": [
+          {
+            "iri": "http://example.org/corporate#TechCorp",
+            "type": "corp:Company"
+          },
+          {
+            "iri": "http://example.org/corporate#Engineering",
+            "type": "corp:Department"
+          },
+          {
+            "iri": "http://example.org/corporate#Sales",
+            "type": "corp:Department"
+          },
+          {
+            "iri": "http://example.org/corporate#HyderabadOffice",
+            "type": "corp:Office"
+          },
+          {
+            "iri": "http://example.org/corporate#GlobalBank",
+            "type": "corp:Client"
+          },
+          {
+            "iri": "http://example.org/corporate#AIPlatform",
+            "type": "corp:Project"
+          },
+          {
+            "iri": "http://example.org/corporate#AliceJohnson",
+            "type": "corp:Manager"
+          },
+          {
+            "iri": "http://example.org/corporate#JohnSmith",
+            "type": "corp:Engineer"
+          }
+        ],
+        "ttlIndividuals": [
+          {
+            "iri": "corp:TechCorp",
+            "type": "corp:Company"
+          },
+          {
+            "iri": "corp:Engineering",
+            "type": "corp:Department"
+          },
+          {
+            "iri": "corp:Sales",
+            "type": "corp:Department"
+          },
+          {
+            "iri": "corp:HyderabadOffice",
+            "type": "corp:Office"
+          },
+          {
+            "iri": "corp:GlobalBank",
+            "type": "corp:Client"
+          },
+          {
+            "iri": "corp:AIPlatform",
+            "type": "corp:Project"
+          },
+          {
+            "iri": "corp:AliceJohnson",
+            "type": "corp:Manager"
+          },
+          {
+            "iri": "corp:JohnSmith",
+            "type": "corp:Engineer"
+          }
+        ],
+        "comparisonResult": {
+          "status": "match",
+          "details": "All 8 individuals from the OWL source are represented in the Turtle ontology with correct typing and matching IRIs (via the corp: prefix)."
+        }
+      },
+      "annotations": {
+        "owlAnnotations": [
+          {
+            "subject": "http://example.org/corporate",
+            "predicate": "rdfs:label",
+            "object": "Corporate Organization Ontology"
+          },
+          {
+            "subject": "http://example.org/corporate",
+            "predicate": "rdfs:comment",
+            "object": "Sample enterprise ontology for GraphDB and OWL to TTL conversion."
+          }
+        ],
+        "ttlAnnotations": [
+          {
+            "subject": "http://example.org/corporate",
+            "predicate": "rdfs:label",
+            "object": "Corporate Organization Ontology"
+          },
+          {
+            "subject": "http://example.org/corporate",
+            "predicate": "rdfs:comment",
+            "object": "Sample enterprise ontology for GraphDB and OWL to TTL conversion."
+          }
+        ],
+        "comparisonResult": {
+          "status": "match",
+          "details": "Ontology-level annotations (label and comment) are preserved without changes in lexical content."
+        }
+      },
+      "objectPropertyAssertions": {
+        "owlAssertions": [
+          {
+            "subject": "http://example.org/corporate#AliceJohnson",
+            "predicate": "corp:worksIn",
+            "object": "http://example.org/corporate#Engineering"
+          },
+          {
+            "subject": "http://example.org/corporate#AliceJohnson",
+            "predicate": "corp:manages",
+            "object": "http://example.org/corporate#Engineering"
+          },
+          {
+            "subject": "http://example.org/corporate#AliceJohnson",
+            "predicate": "corp:worksOn",
+            "object": "http://example.org/corporate#AIPlatform"
+          },
+          {
+            "subject": "http://example.org/corporate#JohnSmith",
+            "predicate": "corp:worksIn",
+            "object": "http://example.org/corporate#Engineering"
+          },
+          {
+            "subject": "http://example.org/corporate#JohnSmith",
+            "predicate": "corp:worksOn",
+            "object": "http://example.org/corporate#AIPlatform"
+          }
+        ],
+        "ttlAssertions": [
+          {
+            "subject": "corp:AliceJohnson",
+            "predicate": "corp:worksIn",
+            "object": "corp:Engineering"
+          },
+          {
+            "subject": "corp:AliceJohnson",
+            "predicate": "corp:manages",
+            "object": "corp:Engineering"
+          },
+          {
+            "subject": "corp:AliceJohnson",
+            "predicate": "corp:worksOn",
+            "object": "corp:AIPlatform"
+          },
+          {
+            "subject": "corp:JohnSmith",
+            "predicate": "corp:worksIn",
+            "object": "corp:Engineering"
+          },
+          {
+            "subject": "corp:JohnSmith",
+            "predicate": "corp:worksOn",
+            "object": "corp:AIPlatform"
+          }
+        ],
+        "comparisonResult": {
+          "status": "match",
+          "details": "All 5 object property assertions from the OWL source are preserved in TTL with corresponding IRIs via corp: prefix."
+        }
+      },
+      "datatypePropertyAssertions": {
+        "owlAssertions": [
+          {
+            "subject": "http://example.org/corporate#AliceJohnson",
+            "predicate": "corp:employeeId",
+            "objectLexicalForm": "1001",
+            "datatype": "implicit/plain literal"
+          },
+          {
+            "subject": "http://example.org/corporate#AliceJohnson",
+            "predicate": "corp:employeeName",
+            "objectLexicalForm": "Alice Johnson",
+            "datatype": "implicit/plain literal"
+          },
+          {
+            "subject": "http://example.org/corporate#AliceJohnson",
+            "predicate": "corp:email",
+            "objectLexicalForm": "alice@techcorp.com",
+            "datatype": "implicit/plain literal"
+          },
+          {
+            "subject": "http://example.org/corporate#AliceJohnson",
+            "predicate": "corp:salary",
+            "objectLexicalForm": "95000",
+            "datatype": "xsd:decimal"
+          },
+          {
+            "subject": "http://example.org/corporate#JohnSmith",
+            "predicate": "corp:employeeId",
+            "objectLexicalForm": "1002",
+            "datatype": "implicit/plain literal"
+          },
+          {
+            "subject": "http://example.org/corporate#JohnSmith",
+            "predicate": "corp:employeeName",
+            "objectLexicalForm": "John Smith",
+            "datatype": "implicit/plain literal"
+          },
+          {
+            "subject": "http://example.org/corporate#JohnSmith",
+            "predicate": "corp:email",
+            "objectLexicalForm": "john@techcorp.com",
+            "datatype": "implicit/plain literal"
+          },
+          {
+            "subject": "http://example.org/corporate#JohnSmith",
+            "predicate": "corp:salary",
+            "objectLexicalForm": "72000",
+            "datatype": "xsd:decimal"
+          }
+        ],
+        "ttlAssertions": [
+          {
+            "subject": "corp:AliceJohnson",
+            "predicate": "corp:employeeId",
+            "objectLexicalForm": "1001",
+            "datatype": "xsd:string"
+          },
+          {
+            "subject": "corp:AliceJohnson",
+            "predicate": "corp:employeeName",
+            "objectLexicalForm": "Alice Johnson",
+            "datatype": "xsd:string"
+          },
+          {
+            "subject": "corp:AliceJohnson",
+            "predicate": "corp:email",
+            "objectLexicalForm": "alice@techcorp.com",
+            "datatype": "xsd:string"
+          },
+          {
+            "subject": "corp:AliceJohnson",
+            "predicate": "corp:salary",
+            "objectLexicalForm": "95000",
+            "datatype": "xsd:decimal"
+          },
+          {
+            "subject": "corp:JohnSmith",
+            "predicate": "corp:employeeId",
+            "objectLexicalForm": "1002",
+            "datatype": "xsd:string"
+          },
+          {
+            "subject": "corp:JohnSmith",
+            "predicate": "corp:employeeName",
+            "objectLexicalForm": "John Smith",
+            "datatype": "xsd:string"
+          },
+          {
+            "subject": "corp:JohnSmith",
+            "predicate": "corp:email",
+            "objectLexicalForm": "john@techcorp.com",
+            "datatype": "xsd:string"
+          },
+          {
+            "subject": "corp:JohnSmith",
+            "predicate": "corp:salary",
+            "objectLexicalForm": "72000",
+            "datatype": "xsd:decimal"
+          }
+        ],
+        "comparisonResult": {
+          "status": "minor-differences",
+          "details": "All datatype property assertions from the OWL source are present in TTL with identical lexical forms. The only difference is that plain literals are explicitly typed as xsd:string in TTL. Numeric salary values retain xsd:decimal, matching the OWL source."
+        }
+      },
+      "efficiencyAnalysis": {
+        "duplicateTriples": [],
+        "redundantEntities": [],
+        "unnecessaryStatements": [],
+        "notes": [
+          "No evidence of duplicate class, property, or individual declarations.",
+          "No additional entities beyond those defined in the source OWL ontology were introduced.",
+          "No redundant axioms (e.g., repeated subclass assertions) observed.",
+          "Literal normalization to xsd:string is consistent across the ontology and does not introduce semantic redundancy."
+        ]
+      }
+    }
+  }
+}

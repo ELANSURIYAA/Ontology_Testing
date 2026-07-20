@@ -1,0 +1,25 @@
+{ 
+  "error": "Conversion failed: output is incomplete Turtle. Classes, properties, individuals, labels, comments, and datatype values from the OWL input were not fully preserved in the TTL output.", 
+  "status": "failure" 
+}
+
+----------
+
+{
+  "status": "failure",
+  "error": "Required Turtle (TTL) ontology content is not available or is invalid. The provided context indicates a failed OWL-to-TTL conversion: \"Conversion failed: output is incomplete Turtle. Classes, properties, individuals, labels, comments, and datatype values from the OWL input were not fully preserved in the TTL output.\" Because the TTL output is incomplete and no valid, complete TTL ontology content was supplied, the file writer operation to ELANSURIYAA/Ontology_Testing (branch: main, folder: workflow output, file: agent1.ttl) cannot be safely executed."
+}
+
+----------
+
+{
+  "status": "failure",
+  "error": "Unable to retrieve TTL ontology file from GitHub. The GitHub File Reader reported: 404 Client Error – the path 'workflow output/agent1.ttl' does not exist in repository 'ELANSURIYAA/Ontology_Testing' on branch 'main'. The required Turtle (TTL) ontology content is therefore unavailable and cannot be returned."
+}
+
+----------
+
+{
+  "status": "failure",
+  "error": "Validation could not be completed because the Turtle (TTL) ontology input is unavailable or invalid. The context indicates that the OWL-to-TTL conversion failed and produced incomplete Turtle, and the GitHub Reader could not retrieve 'workflow output/agent1.ttl' (404 – path does not exist). Without a valid, complete TTL ontology corresponding to the provided OWL source, syntactic validation, component comparison, and metric calculation cannot be reliably performed."
+}

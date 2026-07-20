@@ -1,0 +1,22 @@
+{ "error": "Conversion incomplete: Turtle output is missing object properties, datatype properties, and individuals. Tool did not return a full .ttl representation of the input OWL ontology.", "status": "failure" }
+
+----------
+
+{
+  "status": "failure",
+  "error": "Validated Turtle ontology content is not available. The OWL to TTL conversion context indicates: \"Conversion incomplete: Turtle output is missing object properties, datatype properties, and individuals. Tool did not return a full .ttl representation of the input OWL ontology.\" Because no complete TTL content was provided and the ontology is explicitly marked incomplete, the required 'content' input for the GitHub file write operation is missing/invalid. To comply with the instructions not to modify, regenerate, or reformat the ontology, the GitHub File Writer Tool cannot be safely invoked. No file was created or updated in the ELANSURIYAA/Ontology_Testing repository."
+}
+
+----------
+
+{
+  "status": "failure",
+  "error": "The TTL ontology file could not be read from the repository. The GitHub API returned: 404 Client Error: Not Found for url: https://api.github.com/repos/ELANSURIYAA/Ontology_Testing/contents/workflow%20output1/agent1.ttl?ref=main. This indicates that either the file 'workflow output1/agent1.ttl' does not exist on the 'main' branch of ELANSURIYAA/Ontology_Testing, the folder name or file name is incorrect (including spaces and casing), or the branch reference is invalid. No TTL content was retrieved, and no sensitive token or credentials have been exposed in this error message."
+}
+
+----------
+
+{
+  "status": "failure",
+  "error": "Validation could not be completed because the Turtle ontology input is unavailable and explicitly marked incomplete. The workflow context shows multiple errors: (1) \"Conversion incomplete: Turtle output is missing object properties, datatype properties, and individuals. Tool did not return a full .ttl representation of the input OWL ontology.\" and (2) a GitHub 404 indicating that 'workflow output1/agent1.ttl' on branch 'main' of 'ELANSURIYAA/Ontology_Testing' could not be found. Per instructions, the agent must not regenerate or modify the TTL ontology and must rely only on received inputs. Since no valid, complete TTL content is available for syntactic or semantic comparison, the required validation steps (syntactic verification, component comparison, completeness/accuracy/efficiency scoring) cannot be performed."
+}

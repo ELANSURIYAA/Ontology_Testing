@@ -1,25 +1,315 @@
-{ 
-  "error": "Conversion failed: output is incomplete Turtle. Classes, properties, individuals, labels, comments, and datatype values from the OWL input were not fully preserved in the TTL output.", 
-  "status": "failure" 
-}
-
-----------
-
 {
-  "status": "failure",
-  "error": "Required Turtle (TTL) ontology content is not available or is invalid. The provided context indicates a failed OWL-to-TTL conversion: \"Conversion failed: output is incomplete Turtle. Classes, properties, individuals, labels, comments, and datatype values from the OWL input were not fully preserved in the TTL output.\" Because the TTL output is incomplete and no valid, complete TTL ontology content was supplied, the file writer operation to ELANSURIYAA/Ontology_Testing (branch: main, folder: workflow output, file: agent1.ttl) cannot be safely executed."
-}
-
-----------
-
-{
-  "status": "failure",
-  "error": "Unable to retrieve TTL ontology file from GitHub. The GitHub File Reader reported: 404 Client Error – the path 'workflow output/agent1.ttl' does not exist in repository 'ELANSURIYAA/Ontology_Testing' on branch 'main'. The required Turtle (TTL) ontology content is therefore unavailable and cannot be returned."
-}
-
-----------
-
-{
-  "status": "failure",
-  "error": "Validation could not be completed because the Turtle (TTL) ontology input is unavailable or invalid. The context indicates that the OWL-to-TTL conversion failed and produced incomplete Turtle, and the GitHub Reader could not retrieve 'workflow output/agent1.ttl' (404 – path does not exist). Without a valid, complete TTL ontology corresponding to the provided OWL source, syntactic validation, component comparison, and metric calculation cannot be reliably performed."
+  "status": "success",
+  "overallScore": 55,
+  "completeness": {
+    "score": 40,
+    "summary": "The Turtle ontology contains the ontology declaration and all 8 class entities, but omits subclass relationships, all object and datatype properties, all individuals, all annotations, and all property assertions present in the original OWL ontology. Overall structural coverage is limited to the bare class hierarchy root and class declarations."
+  },
+  "accuracy": {
+    "score": 65,
+    "summary": "The entities that are present in the Turtle file are accurately mapped (ontology IRI and class IRIs) and use valid Turtle syntax. However, namespace coverage is incomplete (no prefixes for rdfs, xsd, corp), annotations are missing, and all properties and assertions from the OWL source are absent, reducing semantic accuracy relative to the original OWL ontology."
+  },
+  "efficiency": {
+    "score": 95,
+    "summary": "The Turtle ontology is very small and contains no duplicate triples or redundant entities. There are no unnecessary statements, but this efficiency is largely a side effect of under-representation of the source ontology rather than optimized modeling."
+  },
+  "validationReport": {
+    "missingEntities": [
+      {
+        "type": "Class",
+        "iri": "http://example.org/corporate#Manager",
+        "detail": "Class exists in TTL but its subclass relationship to Employee is missing; class axiom is incomplete."
+      },
+      {
+        "type": "Class",
+        "iri": "http://example.org/corporate#Engineer",
+        "detail": "Class exists in TTL but its subclass relationship to Employee is missing; class axiom is incomplete."
+      },
+      {
+        "type": "ObjectProperty",
+        "iri": "http://example.org/corporate#worksIn",
+        "detail": "Declared in OWL as owl:ObjectProperty but not present in TTL."
+      },
+      {
+        "type": "ObjectProperty",
+        "iri": "http://example.org/corporate#worksOn",
+        "detail": "Declared in OWL as owl:ObjectProperty but not present in TTL."
+      },
+      {
+        "type": "ObjectProperty",
+        "iri": "http://example.org/corporate#manages",
+        "detail": "Declared in OWL as owl:ObjectProperty but not present in TTL."
+      },
+      {
+        "type": "ObjectProperty",
+        "iri": "http://example.org/corporate#forClient",
+        "detail": "Declared in OWL as owl:ObjectProperty but not present in TTL."
+      },
+      {
+        "type": "ObjectProperty",
+        "iri": "http://example.org/corporate#locatedIn",
+        "detail": "Declared in OWL as owl:ObjectProperty but not present in TTL."
+      },
+      {
+        "type": "DatatypeProperty",
+        "iri": "http://example.org/corporate#employeeId",
+        "detail": "Declared in OWL as owl:DatatypeProperty but not present in TTL."
+      },
+      {
+        "type": "DatatypeProperty",
+        "iri": "http://example.org/corporate#employeeName",
+        "detail": "Declared in OWL as owl:DatatypeProperty but not present in TTL."
+      },
+      {
+        "type": "DatatypeProperty",
+        "iri": "http://example.org/corporate#departmentName",
+        "detail": "Declared in OWL as owl:DatatypeProperty but not present in TTL."
+      },
+      {
+        "type": "DatatypeProperty",
+        "iri": "http://example.org/corporate#projectName",
+        "detail": "Declared in OWL as owl:DatatypeProperty but not present in TTL."
+      },
+      {
+        "type": "DatatypeProperty",
+        "iri": "http://example.org/corporate#clientName",
+        "detail": "Declared in OWL as owl:DatatypeProperty but not present in TTL."
+      },
+      {
+        "type": "DatatypeProperty",
+        "iri": "http://example.org/corporate#officeLocation",
+        "detail": "Declared in OWL as owl:DatatypeProperty but not present in TTL."
+      },
+      {
+        "type": "DatatypeProperty",
+        "iri": "http://example.org/corporate#salary",
+        "detail": "Declared in OWL as owl:DatatypeProperty but not present in TTL."
+      },
+      {
+        "type": "DatatypeProperty",
+        "iri": "http://example.org/corporate#email",
+        "detail": "Declared in OWL as owl:DatatypeProperty but not present in TTL."
+      },
+      {
+        "type": "Individual",
+        "iri": "http://example.org/corporate#TechCorp",
+        "detail": "Individual of class corp:Company in OWL; not present in TTL."
+      },
+      {
+        "type": "Individual",
+        "iri": "http://example.org/corporate#Engineering",
+        "detail": "Individual of class corp:Department in OWL; not present in TTL."
+      },
+      {
+        "type": "Individual",
+        "iri": "http://example.org/corporate#Sales",
+        "detail": "Individual of class corp:Department in OWL; not present in TTL."
+      },
+      {
+        "type": "Individual",
+        "iri": "http://example.org/corporate#HyderabadOffice",
+        "detail": "Individual of class corp:Office in OWL; not present in TTL."
+      },
+      {
+        "type": "Individual",
+        "iri": "http://example.org/corporate#GlobalBank",
+        "detail": "Individual of class corp:Client in OWL; not present in TTL."
+      },
+      {
+        "type": "Individual",
+        "iri": "http://example.org/corporate#AIPlatform",
+        "detail": "Individual of class corp:Project in OWL; not present in TTL."
+      },
+      {
+        "type": "Individual",
+        "iri": "http://example.org/corporate#AliceJohnson",
+        "detail": "Individual of class corp:Manager in OWL; not present in TTL."
+      },
+      {
+        "type": "Individual",
+        "iri": "http://example.org/corporate#JohnSmith",
+        "detail": "Individual of class corp:Engineer in OWL; not present in TTL."
+      },
+      {
+        "type": "Annotation",
+        "iri": "http://example.org/corporate",
+        "detail": "Ontology label 'Corporate Organization Ontology' (rdfs:label) missing in TTL."
+      },
+      {
+        "type": "Annotation",
+        "iri": "http://example.org/corporate",
+        "detail": "Ontology comment 'Sample enterprise ontology for GraphDB and OWL to TTL conversion.' (rdfs:comment) missing in TTL."
+      }
+    ],
+    "missingRelationships": [
+      {
+        "type": "SubclassOf",
+        "source": "http://example.org/corporate#Manager",
+        "target": "http://example.org/corporate#Employee",
+        "detail": "rdfs:subClassOf axiom defined in OWL is not represented in TTL."
+      },
+      {
+        "type": "SubclassOf",
+        "source": "http://example.org/corporate#Engineer",
+        "target": "http://example.org/corporate#Employee",
+        "detail": "rdfs:subClassOf axiom defined in OWL is not represented in TTL."
+      },
+      {
+        "type": "ObjectPropertyAssertion",
+        "source": "http://example.org/corporate#AliceJohnson",
+        "property": "http://example.org/corporate#worksIn",
+        "target": "http://example.org/corporate#Engineering",
+        "detail": "Object property assertion in OWL is not represented in TTL."
+      },
+      {
+        "type": "ObjectPropertyAssertion",
+        "source": "http://example.org/corporate#AliceJohnson",
+        "property": "http://example.org/corporate#manages",
+        "target": "http://example.org/corporate#Engineering",
+        "detail": "Object property assertion in OWL is not represented in TTL."
+      },
+      {
+        "type": "ObjectPropertyAssertion",
+        "source": "http://example.org/corporate#AliceJohnson",
+        "property": "http://example.org/corporate#worksOn",
+        "target": "http://example.org/corporate#AIPlatform",
+        "detail": "Object property assertion in OWL is not represented in TTL."
+      },
+      {
+        "type": "ObjectPropertyAssertion",
+        "source": "http://example.org/corporate#JohnSmith",
+        "property": "http://example.org/corporate#worksIn",
+        "target": "http://example.org/corporate#Engineering",
+        "detail": "Object property assertion in OWL is not represented in TTL."
+      },
+      {
+        "type": "ObjectPropertyAssertion",
+        "source": "http://example.org/corporate#JohnSmith",
+        "property": "http://example.org/corporate#worksOn",
+        "target": "http://example.org/corporate#AIPlatform",
+        "detail": "Object property assertion in OWL is not represented in TTL."
+      },
+      {
+        "type": "DatatypePropertyAssertion",
+        "source": "http://example.org/corporate#AliceJohnson",
+        "property": "http://example.org/corporate#employeeId",
+        "value": "1001",
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer (implicit in OWL literal)",
+        "detail": "Datatype property assertion in OWL is not represented in TTL."
+      },
+      {
+        "type": "DatatypePropertyAssertion",
+        "source": "http://example.org/corporate#AliceJohnson",
+        "property": "http://example.org/corporate#employeeName",
+        "value": "Alice Johnson",
+        "datatype": "http://www.w3.org/2001/XMLSchema#string (implicit in OWL literal)",
+        "detail": "Datatype property assertion in OWL is not represented in TTL."
+      },
+      {
+        "type": "DatatypePropertyAssertion",
+        "source": "http://example.org/corporate#AliceJohnson",
+        "property": "http://example.org/corporate#email",
+        "value": "alice@techcorp.com",
+        "datatype": "http://www.w3.org/2001/XMLSchema#string (implicit in OWL literal)",
+        "detail": "Datatype property assertion in OWL is not represented in TTL."
+      },
+      {
+        "type": "DatatypePropertyAssertion",
+        "source": "http://example.org/corporate#AliceJohnson",
+        "property": "http://example.org/corporate#salary",
+        "value": "95000",
+        "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+        "detail": "Datatype property assertion in OWL is not represented in TTL."
+      },
+      {
+        "type": "DatatypePropertyAssertion",
+        "source": "http://example.org/corporate#JohnSmith",
+        "property": "http://example.org/corporate#employeeId",
+        "value": "1002",
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer (implicit in OWL literal)",
+        "detail": "Datatype property assertion in OWL is not represented in TTL."
+      },
+      {
+        "type": "DatatypePropertyAssertion",
+        "source": "http://example.org/corporate#JohnSmith",
+        "property": "http://example.org/corporate#employeeName",
+        "value": "John Smith",
+        "datatype": "http://www.w3.org/2001/XMLSchema#string (implicit in OWL literal)",
+        "detail": "Datatype property assertion in OWL is not represented in TTL."
+      },
+      {
+        "type": "DatatypePropertyAssertion",
+        "source": "http://example.org/corporate#JohnSmith",
+        "property": "http://example.org/corporate#email",
+        "value": "john@techcorp.com",
+        "datatype": "http://www.w3.org/2001/XMLSchema#string (implicit in OWL literal)",
+        "detail": "Datatype property assertion in OWL is not represented in TTL."
+      },
+      {
+        "type": "DatatypePropertyAssertion",
+        "source": "http://example.org/corporate#JohnSmith",
+        "property": "http://example.org/corporate#salary",
+        "value": "72000",
+        "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+        "detail": "Datatype property assertion in OWL is not represented in TTL."
+      }
+    ],
+    "incorrectMappings": [
+      {
+        "type": "Namespace",
+        "iri": "http://example.org/corporate#",
+        "detail": "The OWL ontology uses the prefix 'corp' for http://example.org/corporate#; the TTL ontology does not declare a corresponding 'corp' prefix and instead uses full IRIs, leading to loss of explicit namespace mapping though IRIs themselves remain correct."
+      },
+      {
+        "type": "Namespace",
+        "iri": "http://www.w3.org/2000/01/rdf-schema#",
+        "detail": "rdfs namespace used in OWL (for label, comment, and subclass) is not declared in TTL and rdfs terms are not used; subclass relations and annotations are therefore absent."
+      },
+      {
+        "type": "Namespace",
+        "iri": "http://www.w3.org/2001/XMLSchema#",
+        "detail": "xsd namespace used in OWL for salary datatype is not declared in TTL; no xsd datatypes appear in the TTL output."
+      }
+    ],
+    "warnings": [
+      {
+        "type": "SyntacticCoverage",
+        "detail": "TTL ontology includes only @prefix declarations for owl and rdf. While syntactically valid, this is insufficient to express annotations, subclass relations, or datatype information present in the source OWL ontology."
+      },
+      {
+        "type": "SemanticLoss",
+        "detail": "All individuals and property assertions from the OWL source are missing in the TTL output. This significantly reduces the semantic richness and instance-level data available for reasoning."
+      },
+      {
+        "type": "AnnotationsDropped",
+        "detail": "Ontology-level annotations (rdfs:label and rdfs:comment) are absent in TTL, which may impact documentation, UI rendering, and ontology discovery."
+      }
+    ],
+    "recommendations": [
+      {
+        "type": "NamespaceDefinition",
+        "detail": "Declare all relevant namespaces in TTL: rdfs: <http://www.w3.org/2000/01/rdf-schema#>, xsd: <http://www.w3.org/2001/XMLSchema#>, and corp: <http://example.org/corporate#>. Use the corp prefix consistently for entities to preserve the original namespace mapping."
+      },
+      {
+        "type": "ClassAxioms",
+        "detail": "Add subclass relationships for Manager and Engineer using rdfs:subClassOf triples: <http://example.org/corporate#Manager> rdfs:subClassOf <http://example.org/corporate#Employee> . and <http://example.org/corporate#Engineer> rdfs:subClassOf <http://example.org/corporate#Employee> ."
+      },
+      {
+        "type": "PropertyDeclarations",
+        "detail": "Include all owl:ObjectProperty and owl:DatatypeProperty declarations that exist in the OWL ontology, using the correct IRIs and prefixes in TTL."
+      },
+      {
+        "type": "IndividualsAndAssertions",
+        "detail": "Generate TTL statements for all individuals (TechCorp, Engineering, Sales, HyderabadOffice, GlobalBank, AIPlatform, AliceJohnson, JohnSmith) and their class types and property assertions as defined in the OWL ontology."
+      },
+      {
+        "type": "AnnotationsPreservation",
+        "detail": "Preserve ontology annotations by adding rdfs:label and rdfs:comment for the ontology IRI in TTL, matching the text values from the OWL source."
+      },
+      {
+        "type": "ConverterEnhancement",
+        "detail": "Enhance the OWL-to-TTL converter logic to process not only class declarations but also subclass axioms, property declarations, individuals, annotations, and property assertions to avoid semantic loss in future conversions."
+      }
+    ]
+  }
 }

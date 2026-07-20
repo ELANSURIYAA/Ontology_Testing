@@ -1,22 +1,219 @@
-{ "error": "Conversion incomplete: Turtle output is missing object properties, datatype properties, and individuals. Tool did not return a full .ttl representation of the input OWL ontology.", "status": "failure" }
-
-----------
-
 {
   "status": "failure",
-  "error": "Validated Turtle ontology content is not available. The OWL to TTL conversion context indicates: \"Conversion incomplete: Turtle output is missing object properties, datatype properties, and individuals. Tool did not return a full .ttl representation of the input OWL ontology.\" Because no complete TTL content was provided and the ontology is explicitly marked incomplete, the required 'content' input for the GitHub file write operation is missing/invalid. To comply with the instructions not to modify, regenerate, or reformat the ontology, the GitHub File Writer Tool cannot be safely invoked. No file was created or updated in the ELANSURIYAA/Ontology_Testing repository."
-}
-
-----------
-
-{
-  "status": "failure",
-  "error": "The TTL ontology file could not be read from the repository. The GitHub API returned: 404 Client Error: Not Found for url: https://api.github.com/repos/ELANSURIYAA/Ontology_Testing/contents/workflow%20output1/agent1.ttl?ref=main. This indicates that either the file 'workflow output1/agent1.ttl' does not exist on the 'main' branch of ELANSURIYAA/Ontology_Testing, the folder name or file name is incorrect (including spaces and casing), or the branch reference is invalid. No TTL content was retrieved, and no sensitive token or credentials have been exposed in this error message."
-}
-
-----------
-
-{
-  "status": "failure",
-  "error": "Validation could not be completed because the Turtle ontology input is unavailable and explicitly marked incomplete. The workflow context shows multiple errors: (1) \"Conversion incomplete: Turtle output is missing object properties, datatype properties, and individuals. Tool did not return a full .ttl representation of the input OWL ontology.\" and (2) a GitHub 404 indicating that 'workflow output1/agent1.ttl' on branch 'main' of 'ELANSURIYAA/Ontology_Testing' could not be found. Per instructions, the agent must not regenerate or modify the TTL ontology and must rely only on received inputs. Since no valid, complete TTL content is available for syntactic or semantic comparison, the required validation steps (syntactic verification, component comparison, completeness/accuracy/efficiency scoring) cannot be performed."
+  "error": "Validation could not be completed because the Turtle (TTL) ontology input is missing/invalid.",
+  "detail": {
+    "reason": "No valid Turtle (TTL) ontology content was provided by the OWL To TTL Converter Agent, and the specified GitHub file 'workflow output1/agent1.ttl' could not be read (404 Not Found).",
+    "inputs": {
+      "owlOntology": {
+        "sourceFormat": "OWL/RDF-XML",
+        "contentValidity": "valid",
+        "contentSummary": {
+          "ontologyIRI": "http://example.org/university",
+          "classes": [
+            "http://example.org/university#Student",
+            "http://example.org/university#Course",
+            "http://example.org/university#Professor"
+          ],
+          "objectProperties": [
+            "http://example.org/university#enrolledIn",
+            "http://example.org/university#teaches"
+          ],
+          "datatypeProperties": [
+            "http://example.org/university#studentName",
+            "http://example.org/university#courseName",
+            "http://example.org/university#professorName"
+          ],
+          "individuals": [
+            "http://example.org/university#Alice",
+            "http://example.org/university#Bob",
+            "http://example.org/university#AI",
+            "http://example.org/university#Databases",
+            "http://example.org/university#DrSmith"
+          ],
+          "annotations": [
+            {
+              "property": "rdfs:label",
+              "value": "University Ontology",
+              "language": null
+            }
+          ],
+          "objectPropertyAssertions": [
+            {
+              "subject": "http://example.org/university#Alice",
+              "property": "http://example.org/university#enrolledIn",
+              "object": "http://example.org/university#AI"
+            },
+            {
+              "subject": "http://example.org/university#Bob",
+              "property": "http://example.org/university#enrolledIn",
+              "object": "http://example.org/university#Databases"
+            },
+            {
+              "subject": "http://example.org/university#DrSmith",
+              "property": "http://example.org/university#teaches",
+              "object": "http://example.org/university#AI"
+            }
+          ],
+          "datatypePropertyAssertions": [
+            {
+              "subject": "http://example.org/university#Alice",
+              "property": "http://example.org/university#studentName",
+              "value": "Alice",
+              "datatype": "xsd:string (implicit)"
+            },
+            {
+              "subject": "http://example.org/university#Bob",
+              "property": "http://example.org/university#studentName",
+              "value": "Bob",
+              "datatype": "xsd:string (implicit)"
+            },
+            {
+              "subject": "http://example.org/university#AI",
+              "property": "http://example.org/university#courseName",
+              "value": "Artificial Intelligence",
+              "datatype": "xsd:string (implicit)"
+            },
+            {
+              "subject": "http://example.org/university#Databases",
+              "property": "http://example.org/university#courseName",
+              "value": "Database Systems",
+              "datatype": "xsd:string (implicit)"
+            },
+            {
+              "subject": "http://example.org/university#DrSmith",
+              "property": "http://example.org/university#professorName",
+              "value": "Dr. Smith",
+              "datatype": "xsd:string (implicit)"
+            }
+          ]
+        }
+      },
+      "ttlOntology": {
+        "sourceFormat": "Turtle",
+        "contentValidity": "invalid",
+        "content": null,
+        "githubSource": {
+          "repo": "ELANSURIYAA/Ontology_Testing",
+          "branch": "main",
+          "folder_name": "workflow output1",
+          "file_name": "agent1.ttl"
+        },
+        "converterContext": {
+          "status": "failure",
+          "error": "Conversion failed: output is incomplete and missing classes, properties, individuals, prefixes, and annotations required by the input OWL ontology."
+        },
+        "readerContext": {
+          "status": "failure",
+          "error": "Unable to read TTL ontology file from GitHub: 404 Not Found for path 'workflow output1/agent1.ttl' in repository 'ELANSURIYAA/Ontology_Testing' on branch 'main'. The file does not exist at the specified location or the path/branch is incorrect."
+        }
+      }
+    },
+    "validationChecks": {
+      "syntacticValidity": {
+        "owl": {
+          "checked": true,
+          "valid": true,
+          "issues": []
+        },
+        "ttl": {
+          "checked": true,
+          "valid": false,
+          "issues": [
+            "No TTL content was provided; cannot parse or validate syntax.",
+            "Converter explicitly reported that the generated TTL output is incomplete and missing required components."
+          ]
+        }
+      },
+      "componentComparison": {
+        "performed": false,
+        "reason": "Comparison of ontology declaration, namespaces, classes, properties, individuals, annotations, and assertions requires a valid TTL ontology. Since TTL content is absent/invalid, component-level comparison cannot be executed.",
+        "components": {
+          "ontologyDeclaration": "not_compared",
+          "namespaces": "not_compared",
+          "classes": "not_compared",
+          "subclassRelationships": "not_compared",
+          "objectProperties": "not_compared",
+          "datatypeProperties": "not_compared",
+          "individuals": "not_compared",
+          "annotations": "not_compared",
+          "objectPropertyAssertions": "not_compared",
+          "datatypePropertyAssertions": "not_compared"
+        }
+      },
+      "completenessEvaluation": {
+        "performed": false,
+        "reason": "Completeness requires verifying that every entity and relationship present in the OWL ontology exists in the TTL ontology. Without TTL triples, this check cannot be executed in a meaningful or quantifiable way.",
+        "expectedFromOWL": {
+          "ontologyDeclaration": 1,
+          "namespaces": 5,
+          "classes": 3,
+          "objectProperties": 2,
+          "datatypeProperties": 3,
+          "individuals": 5,
+          "annotations": 1,
+          "objectPropertyAssertions": 3,
+          "datatypePropertyAssertions": 5
+        },
+        "observedInTTL": "unknown (no content)"
+      },
+      "accuracyEvaluation": {
+        "performed": false,
+        "reason": "Accuracy checks (namespace mappings, entity mappings, predicates, datatypes, Turtle syntax) require actual TTL content. With content missing and converter reporting failure, accuracy cannot be computed."
+      },
+      "efficiencyEvaluation": {
+        "performed": false,
+        "reason": "Efficiency analysis (duplicate triples, redundant entities, unnecessary statements) requires a concrete set of TTL triples. No TTL triples are available."
+      }
+    },
+    "scores": {
+      "completeness": {
+        "score": 0,
+        "summary": "No valid TTL ontology content is available. Completeness cannot be quantitatively assessed; for reporting purposes, completeness is set to 0 because none of the OWL entities and relationships can be confirmed as present in TTL."
+      },
+      "accuracy": {
+        "score": 0,
+        "summary": "Namespace mappings, entity mappings, predicates, datatypes, and Turtle syntax cannot be validated due to missing TTL content. Accuracy is set to 0 to reflect that no correct mappings are verifiable."
+      },
+      "efficiency": {
+        "score": 0,
+        "summary": "Duplicate triples, redundant entities, and unnecessary statements cannot be evaluated without TTL content. Efficiency is set to 0 because no analysis can be performed."
+      },
+      "overallScore": 0,
+      "scoringMethod": "Since the TTL ontology is missing/invalid, all three dimensions (completeness, accuracy, efficiency) are effectively undefined. For consistency with the required numeric output format, each dimension and the overall score are set to 0. These scores do NOT indicate a poor-quality conversion; they indicate that validation could not be executed."
+    },
+    "validationReport": {
+      "missingEntities": [
+        "All entities expected from OWL (ontology IRI, classes, properties, individuals) are considered missing in TTL because no TTL content is available to confirm their presence."
+      ],
+      "missingRelationships": [
+        "All relationships expected from OWL (object property assertions and datatype property assertions) are considered missing in TTL for the same reason."
+      ],
+      "incorrectMappings": [
+        "Potential incorrect mappings cannot be detected because TTL content is absent.",
+        "Converter context indicates that if any TTL was produced, it is incomplete and missing required elements, implying correctness issues, but specific incorrect triples cannot be enumerated."
+      ],
+      "syntaxIssues": [
+        "TTL syntax cannot be parsed or validated because no TTL text is available.",
+        "Converter error message strongly suggests syntactic or structural issues in the attempted conversion output."
+      ],
+      "namespaceInconsistencies": [
+        "Namespace consistency cannot be assessed; no Turtle prefixes or base declarations were provided."
+      ],
+      "warnings": [
+        "The OWL To TTL Converter Agent reported: 'Conversion failed: output is incomplete and missing classes, properties, individuals, prefixes, and annotations required by the input OWL ontology.'",
+        "The GitHub Reader Agent reported: '404 Not Found for path \"workflow output1/agent1.ttl\" in repository \"ELANSURIYAA/Ontology_Testing\" on branch \"main\".'",
+        "Any downstream process assuming the existence of a valid 'agent1.ttl' file in 'workflow output1' on branch 'main' will fail until a proper TTL file is generated and stored.",
+        "No semantic or structural validation of the TTL ontology has been performed; any quality assumptions about the conversion are currently unfounded."
+      ],
+      "recommendations": [
+        "Re-run the OWL To TTL Converter Agent with the provided OWL ontology to generate a complete and valid Turtle representation. Ensure that the converter is configured to preserve all classes, properties, individuals, annotations, and assertions.",
+        "After successful conversion, verify that the TTL output is actually written to the GitHub repository at the expected path: 'workflow output1/agent1.ttl' on branch 'main'. Double-check folder and file names for typos or path mismatches.",
+        "Introduce automated post-conversion checks in the workflow: for example, parse the generated TTL with a standard RDF library (e.g., Apache Jena, RDF4J) to confirm syntactic validity before attempting to store or use the file.",
+        "Add a structural validation step that compares counts of classes, object properties, datatype properties, individuals, and annotations between OWL and TTL to detect missing elements early. For this ontology, the TTL should contain at least: 3 classes, 2 object properties, 3 datatype properties, 5 individuals, 1 ontology label, and 8 property assertions.",
+        "Implement error propagation in the workflow: when the OWL To TTL Converter Agent reports failure, subsequent agents (including GitHub writer and validator) should short-circuit and clearly mark the entire pipeline as failed, rather than attempting operations on missing content.",
+        "Once a valid TTL file is available, re-run this validation process to compute real Completeness, Accuracy, Efficiency, and Overall scores, and to obtain a detailed mapping-by-mapping quality report.",
+        "Consider adding regression tests for the converter using this small university ontology as a fixture: check that all expected IRIs, literals, and triples appear in the TTL output to prevent future regressions."
+      ]
+    }
+  }
 }

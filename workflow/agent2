@@ -1,25 +1,4 @@
-{  
-  "error": "Conversion incomplete: Turtle output is truncated and missing classes, properties, and individuals. Please re-run the OWL-to-Turtle conversion with a complete renderer.",
-  "status": "failure"
-}
-
-----------
-
 {
   "status": "failure",
-  "error": "Detailed error message: Required Turtle (TTL) ontology content from the OWL To TTL Converter Agent is not present or is invalid. The provided context only contains an error object indicating that the conversion is incomplete and the Turtle output is truncated and missing classes, properties, and individuals. Because valid, complete TTL content was not supplied, the file writer operation to ELANSURIYAA/Ontology_Testing (branch: main, folder: workflow, file: agent1.ttl) cannot be safely executed. Please re-run the OWL-to-Turtle conversion to obtain the full, valid TTL ontology content and then retry the GitHub write operation with that exact content."
-}
-
-----------
-
-{
-  "status": "failure",
-  "error": "Unable to read TTL ontology file from GitHub. The GitHub File Reader Tool returned: 404 Client Error: Not Found for url: https://api.github.com/repos/ELANSURIYAA/Ontology_Testing/contents/workflow/agent1.ttl?ref=main. This indicates that the file 'workflow/agent1.ttl' does not exist in the 'ELANSURIYAA/Ontology_Testing' repository on branch 'main' at the specified path, or is otherwise inaccessible. Please verify that the repository name, branch, folder path ('workflow'), and file name ('agent1.ttl') are correct, that the file has been committed, and that the provided token has sufficient access. Once the file is present and accessible, re-run the operation to retrieve the complete TTL ontology content."
-}
-
-----------
-
-{
-  "status": "failure",
-  "error": "Validation could not be completed because the Turtle (TTL) ontology input is missing or invalid. The provided context from the GitHub Reader / converter workflow consists only of error objects indicating: (1) the OWL-to-Turtle conversion was incomplete and the TTL output is truncated and missing classes, properties, and individuals, and (2) the GitHub File Reader returned a 404 Not Found for 'workflow/agent1.ttl' in the 'ELANSURIYAA/Ontology_Testing' repository on branch 'main'. Since no valid, complete TTL ontology content was supplied, syntactic validation, component comparison, and metric computation cannot be performed according to the specified instructions."
+  "error": "Validation could not be completed because the Turtle (TTL) ontology input is unavailable and invalid. The provided context shows that the OWL→TTL conversion failed, produced incomplete Turtle output (only ontology and class declarations, missing properties, individuals, labels, and comments), and that the TTL file 'workflow/agent1.ttl' does not exist in the repository 'ELANSURIYAA/Ontology_Testing' on branch 'main' (GitHub API 404). Without an actual, complete TTL ontology content to validate against the OWL source, syntactic and semantic comparison cannot be performed, so completeness, accuracy, and efficiency metrics cannot be computed."
 }

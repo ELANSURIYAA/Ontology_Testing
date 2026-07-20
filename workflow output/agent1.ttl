@@ -1,0 +1,13 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://example.org/corporate> a owl:Ontology .
+
+<http://example.org/corporate#Company> a owl:Class .
+<http://example.org/corporate#Department> a owl:Class .
+<http://example.org/corporate#Employee> a owl:Class .
+<http://example.org/corporate#Manager> a owl:Class .
+<http://example.org/corporate#Engineer> a owl:Class .
+<http://example.org/corporate#Project> a owl:Class .
+<http://example.org/corporate#Client> a owl:Class .
+<http://example.org/corporate#Office> a owl:Class .

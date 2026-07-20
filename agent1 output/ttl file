@@ -65,3 +65,7 @@ corp:JohnSmith a corp:Engineer ;
     corp:salary "72000"^^xsd:decimal ;
     corp:worksIn corp:Engineering ;
     corp:worksOn corp:AIPlatform .
+
+corp:BobWilliams a corp:Engineer ;
+    corp:employeeId "1003"^^xsd:string ;
+    corp:employeeName "Bob Williams"^^xsd:string .

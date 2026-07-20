@@ -1,0 +1,4 @@
+{
+  "status": "failure",
+  "error": "Validation could not be completed because the Turtle (TTL) ontology input is missing or invalid. Context from the workflow indicates that (1) the OWL→TTL converter output is truncated and missing classes, properties, and individuals, and (2) the GitHub Reader failed with a 404 for workflow/agent1.ttl, so no complete TTL content is available for syntactic or semantic comparison against the source OWL ontology."
+}

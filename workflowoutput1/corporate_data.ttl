@@ -1,0 +1,71 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix corp: <http://example.org/corporate#> .
+
+<http://example.org/corporate> a owl:Ontology ;
+    rdfs:label "Corporate Organization Ontology" ;
+    rdfs:comment "Sample enterprise ontology for GraphDB and OWL to TTL conversion." .
+
+corp:Company a owl:Class .
+
+corp:Department a owl:Class .
+
+corp:Employee a owl:Class .
+
+corp:Manager a owl:Class ;
+    rdfs:subClassOf corp:Employee .
+
+corp:Engineer a owl:Class ;
+    rdfs:subClassOf corp:Employee .
+
+corp:Project a owl:Class .
+
+corp:Client a owl:Class .
+
+corp:Office a owl:Class .
+
+corp:worksIn a owl:ObjectProperty .
+corp:worksOn a owl:ObjectProperty .
+corp:manages a owl:ObjectProperty .
+corp:forClient a owl:ObjectProperty .
+corp:locatedIn a owl:ObjectProperty .
+
+corp:employeeId a owl:DatatypeProperty .
+corp:employeeName a owl:DatatypeProperty .
+corp:departmentName a owl:DatatypeProperty .
+corp:projectName a owl:DatatypeProperty .
+corp:clientName a owl:DatatypeProperty .
+corp:officeLocation a owl:DatatypeProperty .
+corp:salary a owl:DatatypeProperty .
+corp:email a owl:DatatypeProperty .
+
+corp:TechCorp a corp:Company .
+
+corp:Engineering a corp:Department .
+
+corp:Sales a corp:Department .
+
+corp:HyderabadOffice a corp:Office .
+
+corp:GlobalBank a corp:Client .
+
+corp:AIPlatform a corp:Project .
+
+corp:AliceJohnson a corp:Manager ;
+    corp:employeeId "1001" ;
+    corp:employeeName "Alice Johnson" ;
+    corp:email "alice@techcorp.com" ;
+    corp:salary "95000"^^<http://www.w3.org/2001/XMLSchema#decimal> ;
+    corp:worksIn corp:Engineering ;
+    corp:manages corp:Engineering ;
+    corp:worksOn corp:AIPlatform .
+
+corp:JohnSmith a corp:Engineer ;
+    corp:employeeId "1002" ;
+    corp:employeeName "John Smith" ;
+    corp:email "john@techcorp.com" ;
+    corp:salary "72000"^^<http://www.w3.org/2001/XMLSchema#decimal> ;
+    corp:worksIn corp:Engineering ;
+    corp:worksOn corp:AIPlatform .

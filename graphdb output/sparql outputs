@@ -10,358 +10,133 @@
             "question": "What is the ontology IRI, label, and comment of the corporate organization ontology?",
             "status": "success",
             "rowsReturned": 1,
-            "result": {
-                "head": {
-                    "vars": [
-                        "ontology",
-                        "label",
-                        "comment"
-                    ]
-                },
-                "results": {
-                    "bindings": [
-                        {
-                            "ontology": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate"
-                            },
-                            "label": {
-                                "type": "literal",
-                                "value": "Corporate Organization Ontology"
-                            },
-                            "comment": {
-                                "type": "literal",
-                                "value": "Sample enterprise ontology for GraphDB and OWL to TTL conversion."
-                            }
-                        }
-                    ]
+            "data": [
+                {
+                    "ontology": "http://example.org/corporate",
+                    "label": "Corporate Organization Ontology",
+                    "comment": "Sample enterprise ontology for GraphDB and OWL to TTL conversion."
                 }
-            }
+            ]
         },
         {
             "queryNumber": 2,
             "question": "What are all classes in the corporate ontology, and which classes are declared as subclasses of other classes?",
             "status": "success",
             "rowsReturned": 8,
-            "result": {
-                "head": {
-                    "vars": [
-                        "class",
-                        "superClass"
-                    ]
+            "data": [
+                {
+                    "class": "http://example.org/corporate#Company"
                 },
-                "results": {
-                    "bindings": [
-                        {
-                            "class": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Company"
-                            }
-                        },
-                        {
-                            "class": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Department"
-                            }
-                        },
-                        {
-                            "class": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Employee"
-                            }
-                        },
-                        {
-                            "class": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Manager"
-                            },
-                            "superClass": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Employee"
-                            }
-                        },
-                        {
-                            "class": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Engineer"
-                            },
-                            "superClass": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Employee"
-                            }
-                        },
-                        {
-                            "class": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Project"
-                            }
-                        },
-                        {
-                            "class": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Client"
-                            }
-                        },
-                        {
-                            "class": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Office"
-                            }
-                        }
-                    ]
+                {
+                    "class": "http://example.org/corporate#Department"
+                },
+                {
+                    "class": "http://example.org/corporate#Employee"
+                },
+                {
+                    "class": "http://example.org/corporate#Manager",
+                    "superClass": "http://example.org/corporate#Employee"
+                },
+                {
+                    "class": "http://example.org/corporate#Engineer",
+                    "superClass": "http://example.org/corporate#Employee"
+                },
+                {
+                    "class": "http://example.org/corporate#Project"
+                },
+                {
+                    "class": "http://example.org/corporate#Client"
+                },
+                {
+                    "class": "http://example.org/corporate#Office"
                 }
-            }
+            ]
         },
         {
             "queryNumber": 3,
             "question": "Which individuals are employees (including managers and engineers), and what are their employee IDs and names?",
             "status": "success",
             "rowsReturned": 6,
-            "result": {
-                "head": {
-                    "vars": [
-                        "employee",
-                        "type",
-                        "employeeId",
-                        "employeeName"
-                    ]
+            "data": [
+                {
+                    "employee": "http://example.org/corporate#AliceJohnson",
+                    "type": "http://example.org/corporate#Employee",
+                    "employeeId": "1001",
+                    "employeeName": "Alice Johnson"
                 },
-                "results": {
-                    "bindings": [
-                        {
-                            "employee": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#AliceJohnson"
-                            },
-                            "type": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Employee"
-                            },
-                            "employeeId": {
-                                "type": "literal",
-                                "value": "1001"
-                            },
-                            "employeeName": {
-                                "type": "literal",
-                                "value": "Alice Johnson"
-                            }
-                        },
-                        {
-                            "employee": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#JohnSmith"
-                            },
-                            "type": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Employee"
-                            },
-                            "employeeId": {
-                                "type": "literal",
-                                "value": "1002"
-                            },
-                            "employeeName": {
-                                "type": "literal",
-                                "value": "John Smith"
-                            }
-                        },
-                        {
-                            "employee": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#BobWilliams"
-                            },
-                            "type": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Employee"
-                            },
-                            "employeeId": {
-                                "type": "literal",
-                                "value": "1003"
-                            },
-                            "employeeName": {
-                                "type": "literal",
-                                "value": "Bob Williams"
-                            }
-                        },
-                        {
-                            "employee": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#AliceJohnson"
-                            },
-                            "type": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Manager"
-                            },
-                            "employeeId": {
-                                "type": "literal",
-                                "value": "1001"
-                            },
-                            "employeeName": {
-                                "type": "literal",
-                                "value": "Alice Johnson"
-                            }
-                        },
-                        {
-                            "employee": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#JohnSmith"
-                            },
-                            "type": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Engineer"
-                            },
-                            "employeeId": {
-                                "type": "literal",
-                                "value": "1002"
-                            },
-                            "employeeName": {
-                                "type": "literal",
-                                "value": "John Smith"
-                            }
-                        },
-                        {
-                            "employee": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#BobWilliams"
-                            },
-                            "type": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#Engineer"
-                            },
-                            "employeeId": {
-                                "type": "literal",
-                                "value": "1003"
-                            },
-                            "employeeName": {
-                                "type": "literal",
-                                "value": "Bob Williams"
-                            }
-                        }
-                    ]
+                {
+                    "employee": "http://example.org/corporate#JohnSmith",
+                    "type": "http://example.org/corporate#Employee",
+                    "employeeId": "1002",
+                    "employeeName": "John Smith"
+                },
+                {
+                    "employee": "http://example.org/corporate#BobWilliams",
+                    "type": "http://example.org/corporate#Employee",
+                    "employeeId": "1003",
+                    "employeeName": "Bob Williams"
+                },
+                {
+                    "employee": "http://example.org/corporate#AliceJohnson",
+                    "type": "http://example.org/corporate#Manager",
+                    "employeeId": "1001",
+                    "employeeName": "Alice Johnson"
+                },
+                {
+                    "employee": "http://example.org/corporate#JohnSmith",
+                    "type": "http://example.org/corporate#Engineer",
+                    "employeeId": "1002",
+                    "employeeName": "John Smith"
+                },
+                {
+                    "employee": "http://example.org/corporate#BobWilliams",
+                    "type": "http://example.org/corporate#Engineer",
+                    "employeeId": "1003",
+                    "employeeName": "Bob Williams"
                 }
-            }
+            ]
         },
         {
             "queryNumber": 4,
             "question": "Which employees work in the Engineering department, what projects do they work on, and who manages that department?",
             "status": "success",
             "rowsReturned": 2,
-            "result": {
-                "head": {
-                    "vars": [
-                        "employee",
-                        "employeeName",
-                        "project",
-                        "manager"
-                    ]
+            "data": [
+                {
+                    "employee": "http://example.org/corporate#AliceJohnson",
+                    "employeeName": "Alice Johnson",
+                    "project": "http://example.org/corporate#AIPlatform",
+                    "manager": "http://example.org/corporate#AliceJohnson"
                 },
-                "results": {
-                    "bindings": [
-                        {
-                            "employee": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#AliceJohnson"
-                            },
-                            "employeeName": {
-                                "type": "literal",
-                                "value": "Alice Johnson"
-                            },
-                            "project": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#AIPlatform"
-                            },
-                            "manager": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#AliceJohnson"
-                            }
-                        },
-                        {
-                            "employee": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#JohnSmith"
-                            },
-                            "employeeName": {
-                                "type": "literal",
-                                "value": "John Smith"
-                            },
-                            "project": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#AIPlatform"
-                            },
-                            "manager": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#AliceJohnson"
-                            }
-                        }
-                    ]
+                {
+                    "employee": "http://example.org/corporate#JohnSmith",
+                    "employeeName": "John Smith",
+                    "project": "http://example.org/corporate#AIPlatform",
+                    "manager": "http://example.org/corporate#AliceJohnson"
                 }
-            }
+            ]
         },
         {
             "queryNumber": 5,
             "question": "What are the salary, email, and employee ID for each person working on the AIPlatform project?",
             "status": "success",
             "rowsReturned": 2,
-            "result": {
-                "head": {
-                    "vars": [
-                        "employee",
-                        "employeeName",
-                        "employeeId",
-                        "email",
-                        "salary"
-                    ]
+            "data": [
+                {
+                    "employee": "http://example.org/corporate#AliceJohnson",
+                    "employeeName": "Alice Johnson",
+                    "employeeId": "1001",
+                    "email": "alice@techcorp.com",
+                    "salary": "95000"
                 },
-                "results": {
-                    "bindings": [
-                        {
-                            "employee": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#AliceJohnson"
-                            },
-                            "employeeName": {
-                                "type": "literal",
-                                "value": "Alice Johnson"
-                            },
-                            "employeeId": {
-                                "type": "literal",
-                                "value": "1001"
-                            },
-                            "email": {
-                                "type": "literal",
-                                "value": "alice@techcorp.com"
-                            },
-                            "salary": {
-                                "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
-                                "type": "literal",
-                                "value": "95000"
-                            }
-                        },
-                        {
-                            "employee": {
-                                "type": "uri",
-                                "value": "http://example.org/corporate#JohnSmith"
-                            },
-                            "employeeName": {
-                                "type": "literal",
-                                "value": "John Smith"
-                            },
-                            "employeeId": {
-                                "type": "literal",
-                                "value": "1002"
-                            },
-                            "email": {
-                                "type": "literal",
-                                "value": "john@techcorp.com"
-                            },
-                            "salary": {
-                                "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
-                                "type": "literal",
-                                "value": "72000"
-                            }
-                        }
-                    ]
+                {
+                    "employee": "http://example.org/corporate#JohnSmith",
+                    "employeeName": "John Smith",
+                    "employeeId": "1002",
+                    "email": "john@techcorp.com",
+                    "salary": "72000"
                 }
-            }
+            ]
         }
     ]
 }

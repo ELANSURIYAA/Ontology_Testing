@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "totalQueries": 5,
+  "queries": [
+    {
+      "question": "What is the ontology IRI, label, and comment of the corporate organization ontology?",
+      "sparql": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX corp: <http://example.org/corporate#>\n\nSELECT ?ontology ?label ?comment\nWHERE {\n  ?ontology a owl:Ontology .\n  OPTIONAL { ?ontology rdfs:label ?label . }\n  OPTIONAL { ?ontology rdfs:comment ?comment . }\n}\n"
+    },
+    {
+      "question": "What are all classes in the corporate ontology, and which classes are declared as subclasses of other classes?",
+      "sparql": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX corp: <http://example.org/corporate#>\n\nSELECT ?class ?superClass\nWHERE {\n  ?class a owl:Class .\n  OPTIONAL { ?class rdfs:subClassOf ?superClass . }\n}\n"
+    },
+    {
+      "question": "Which individuals are employees (including managers and engineers), and what are their employee IDs and names?",
+      "sparql": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX corp: <http://example.org/corporate#>\n\nSELECT ?employee ?type ?employeeId ?employeeName\nWHERE {\n  ?employee a ?type .\n  VALUES ?type { corp:Employee corp:Manager corp:Engineer } .\n  OPTIONAL { ?employee corp:employeeId ?employeeId . }\n  OPTIONAL { ?employee corp:employeeName ?employeeName . }\n}\n"
+    },
+    {
+      "question": "Which employees work in the Engineering department, what projects do they work on, and who manages that department?",
+      "sparql": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX corp: <http://example.org/corporate#>\n\nSELECT ?employee ?employeeName ?project ?manager\nWHERE {\n  ?employee corp:worksIn corp:Engineering .\n  OPTIONAL { ?employee corp:employeeName ?employeeName . }\n  OPTIONAL { ?employee corp:worksOn ?project . }\n  OPTIONAL { ?manager corp:manages corp:Engineering . }\n}\n"
+    },
+    {
+      "question": "What are the salary, email, and employee ID for each person working on the AIPlatform project?",
+      "sparql": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX corp: <http://example.org/corporate#>\n\nSELECT ?employee ?employeeName ?employeeId ?email ?salary\nWHERE {\n  ?employee corp:worksOn corp:AIPlatform .\n  OPTIONAL { ?employee corp:employeeName ?employeeName . }\n  OPTIONAL { ?employee corp:employeeId ?employeeId . }\n  OPTIONAL { ?employee corp:email ?email . }\n  OPTIONAL { ?employee corp:salary ?salary . }\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:corp="http://example.org/corporate#">
+
+  <owl:Ontology rdf:about="http://example.org/corporate">
+    <rdfs:label>Corporate Organization Ontology</rdfs:label>
+    <rdfs:comment>Sample enterprise ontology for GraphDB and OWL to TTL conversion.</rdfs:comment>
+  </owl:Ontology>
+
+  <!-- Classes -->
+  <owl:Class rdf:about="http://example.org/corporate#Company"/>
+  <owl:Class rdf:about="http://example.org/corporate#Department"/>
+  <owl:Class rdf:about="http://example.org/corporate#Employee"/>
+  <owl:Class rdf:about="http://example.org/corporate#Manager">
+    <rdfs:subClassOf rdf:resource="http://example.org/corporate#Employee"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.org/corporate#Engineer">
+    <rdfs:subClassOf rdf:resource="http://example.org/corporate#Employee"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.org/corporate#Project"/>
+  <owl:Class rdf:about="http://example.org/corporate#Client"/>
+  <owl:Class rdf:about="http://example.org/corporate#Office"/>
+
+  <!-- Object Properties -->
+  <owl:ObjectProperty rdf:about="http://example.org/corporate#worksIn"/>
+  <owl:ObjectProperty rdf:about="http://example.org/corporate#worksOn"/>
+  <owl:ObjectProperty rdf:about="http://example.org/corporate#manages"/>
+  <owl:ObjectProperty rdf:about="http://example.org/corporate#forClient"/>
+  <owl:ObjectProperty rdf:about="http://example.org/corporate#locatedIn"/>
+
+  <!-- Datatype Properties -->
+  <owl:DatatypeProperty rdf:about="http://example.org/corporate#employeeId"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/corporate#employeeName"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/corporate#departmentName"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/corporate#projectName"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/corporate#clientName"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/corporate#officeLocation"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/corporate#salary"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/corporate#email"/>
+
+  <!-- Individuals -->
+  <corp:Company rdf:about="http://example.org/corporate#TechCorp"/>
+  <corp:Department rdf:about="http://example.org/corporate#Engineering"/>
+  <corp:Department rdf:about="http://example.org/corporate#Sales"/>
+  <corp:Office rdf:about="http://example.org/corporate#HyderabadOffice"/>
+  <corp:Client rdf:about="http://example.org/corporate#GlobalBank"/>
+  <corp:Project rdf:about="http://example.org/corporate#AIPlatform"/>
+
+  <corp:Manager rdf:about="http://example.org/corporate#AliceJohnson">
+    <corp:employeeId>1001</corp:employeeId>
+    <corp:employeeName>Alice Johnson</corp:employeeName>
+    <corp:email>alice@techcorp.com</corp:email>
+    <corp:salary rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">95000</corp:salary>
+    <corp:worksIn rdf:resource="http://example.org/corporate#Engineering"/>
+    <corp:manages rdf:resource="http://example.org/corporate#Engineering"/>
+    <corp:worksOn rdf:resource="http://example.org/corporate#AIPlatform"/>
+  </corp:Manager>
+
+  <corp:Engineer rdf:about="http://example.org/corporate#JohnSmith">
+    <corp:employeeId>1002</corp:employeeId>
+    <corp:employeeName>John Smith</corp:employeeName>
+    <corp:email>john@techcorp.com</corp:email>
+    <corp:salary rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">72000</corp:salary>
+    <corp:worksIn rdf:resource="http://example.org/corporate#Engineering"/>
+    <corp:worksOn rdf:resource="http://example.org/corporate#AIPlatform"/>
+  </corp:Engineer>
+
+</rdf:RDF>

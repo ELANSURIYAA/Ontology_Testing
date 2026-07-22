@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "totalQueries": 5,
+  "queries": [
+    {
+      "question": "What is the ontology IRI and its human-readable annotations (label and comment) defined in the corporate ontology?",
+      "sparql": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX corp: <http://example.org/corporate#>\n\nSELECT ?ontology ?label ?comment\nWHERE {\n  ?ontology a owl:Ontology .\n  OPTIONAL { ?ontology rdfs:label ?label . }\n  OPTIONAL { ?ontology rdfs:comment ?comment . }\n}\n"
+    },
+    {
+      "question": "What are all classes in the corporate ontology and which classes are declared as subclasses of other classes (class hierarchy)?",
+      "sparql": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX corp: <http://example.org/corporate#>\n\nSELECT ?class ?superClass\nWHERE {\n  ?class a owl:Class .\n  OPTIONAL { ?class rdfs:subClassOf ?superClass . }\n}\nORDER BY ?class\n"
+    },
+    {
+      "question": "Which individuals are employees (either Employee itself or its subclasses Manager and Engineer), and what are their employee IDs and names?",
+      "sparql": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX corp: <http://example.org/corporate#>\n\nSELECT ?employee ?type ?employeeId ?employeeName\nWHERE {\n  ?employee a ?type .\n  VALUES ?type { corp:Employee corp:Manager corp:Engineer } .\n  OPTIONAL { ?employee corp:employeeId ?employeeId . }\n  OPTIONAL { ?employee corp:employeeName ?employeeName . }\n}\nORDER BY ?employee\n"
+    },
+    {
+      "question": "Which employees work in which departments and on which projects, and which departments are managed by which managers, according to the object properties in the corporate ontology?",
+      "sparql": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX corp: <http://example.org/corporate#>\n\nSELECT ?employee ?employeeType ?department ?project ?managedDepartment\nWHERE {\n  ?employee a ?employeeType .\n  VALUES ?employeeType { corp:Employee corp:Manager corp:Engineer } .\n  OPTIONAL { ?employee corp:worksIn ?department . }\n  OPTIONAL { ?employee corp:worksOn ?project . }\n  OPTIONAL { ?employee corp:manages ?managedDepartment . }\n}\nORDER BY ?employee\n"
+    },
+    {
+      "question": "What are the employee names, emails, and salaries of all managers and engineers in the corporate ontology?",
+      "sparql": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX corp: <http://example.org/corporate#>\n\nSELECT ?employee ?type ?employeeName ?email ?salary\nWHERE {\n  ?employee a ?type .\n  VALUES ?type { corp:Manager corp:Engineer } .\n  OPTIONAL { ?employee corp:employeeName ?employeeName . }\n  OPTIONAL { ?employee corp:email ?email . }\n  OPTIONAL { ?employee corp:salary ?salary . }\n}\nORDER BY ?employee\n"
+    }
+  ]
+}
